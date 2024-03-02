@@ -1,0 +1,39 @@
+body
+{
+background-color: rebeccapurple !important;
+}
+
+#sketch_to_be_drawn
+{
+    font-size: 27px; 
+}
+
+#confidence
+{
+    font-size: 27px; 
+}
+
+#your_sketch
+{
+   font-size: 27px;  
+}
+ 
+#title
+{
+    color:black;
+}
+
+#score
+{
+    color:black;
+    font-size: 25px;
+    margin-left: 50px;
+}
+
+#timer
+{
+    color:black;
+    font-size: 25px;
+    float: right;
+    margin-right: 50px;
+}
