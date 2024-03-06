@@ -1,39 +1,38 @@
-body
+body 
 {
-background-color: rebeccapurple !important;
+background-color: blueviolet;
 }
 
-#sketch_to_be_drawn
-{
-    font-size: 27px; 
-}
 
-#confidence
-{
-    font-size: 27px; 
+.copy_right_footer {
+  position: fixed;
+  color: white;
+  bottom: 0;
+  width: 100%;
+  background-color:grey;
+  line-height: 3;
+  text-align: center;
 }
-
-#your_sketch
+canvas 
 {
-   font-size: 27px;  
+  border:5px solid white;
+  border-radius:20px;
+  box-shadow:5px 5px 5px grey;
+  margin-top: 150px; 
 }
- 
-#title
+.heading
 {
-    color:black;
+  font-size: 23px;
+  width: 100%;
+  margin: 0px;
+  box-shadow:5px 5px 5px grey;
 }
-
-#score
+.heading_div
 {
-    color:black;
-    font-size: 25px;
-    margin-left: 50px;
-}
-
-#timer
-{
-    color:black;
-    font-size: 25px;
-    float: right;
-    margin-right: 50px;
+  float: none ; 
+  background: white ; 
+  padding: 10px; 
+  border-radius: 20px; 
+  color: black;
+  box-shadow:5px 5px 5px grey;
 }
