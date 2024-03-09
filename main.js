@@ -3,9 +3,12 @@ quick_draw_data_set=["aircraft carrier","airplane","alarm clock","ambulance","an
 
 var random_number = Math.floor((Math.random()*array_1.length)+1)
 
-Element_of_array = array_1 [random_number]
+console.log(quick_draw_data_set[random_number]);
+sketch = quick_draw_data_set[random_number];
+document.getElementById('sketch_name').innerHTML = 'Sketch To be Drawn: ' + sketch;
 
-console.log( quick_draw_data_set)
+
+
 
 
 timer_counter = 0;
@@ -14,21 +17,39 @@ drawn_sketch = "";
 answer_holder = "";
 score = 0;
 
+function preload() {
+    classifier = ml5.imageClassifier('DoodleNet')
+    }
+
 function setup() {
     canvas = createCanvas (280, 280);
     canvas.center();
     background("white");
-    }
+    canvas.mouseReleased(classifyCanvas);
+  
+}
     
-    function clearCanvas() {
+    function updateCanvas() {
         background("white")
+        random_number = Math.floor((Math.random() * quick_draw_data_set.length) + 1);
+        console.log(quick_draw_data_set[random_number]);
+        sketch = quick_draw_data_set[random_number];
+        document.getElementById('sketch_name').innerHTML = 'Sketch To be Drawn: ' + sketch;
     }
 
     function draw() {
+        strokeWeight (7);
+        strokestyle(orange);
+     if (mouseIsPressed)
+     {
+        line(pmouseX, pmouseY, mouseX, mouseY);
+     }
+
+
         check_sketch()
         if ( drawn_sketch == sketch) {
             answer_holder = "set";
-            score = score + 5;
+            score++
         }
     }
 
@@ -37,7 +58,7 @@ function setup() {
     timer_counter = timer_counter + 1;
 document.getElementById("timer").innerHTML = '<span> "timer" + ',timer_counter,' </span> ';
 console.log("timer counter", timer_counter)
- if(timer_counter > 20000) 
+ if(timer_counter > 30000) 
  {
     timer_counter = 0;
     timer_check = "completed";
@@ -52,6 +73,23 @@ updateCanvas()
 }
 
 
+function classifyCanvas() {
+
+classifier.classify(canvas, gotResult);
+}
+
+function gotResult(error, results) {
+    if(error) {
+        console.error(error);
+    }
+console.log(results);
+document.getElementById('sketch_to_be_drawn').innerHTML = 'drawn sketch:' + results[0].label;
+
+document.getElementById('confidence').innerHTML = 'Confidence:' + Math.round(results[0].confidence * 100) + '%';
+
+document.getElementById('your_sketch').innerHTML =  "your sketch" + drawn_sketch ;
+
+}
 
 
 
